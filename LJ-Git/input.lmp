@@ -1,0 +1,84 @@
+#########################################################
+#							#
+#							#
+#		Script by K. Sriram			#
+#		written on 19/03/2022			#
+#########################################################
+log			log.nvt_run
+################### System Setup ########################
+variable	eq_step		equal	1e5
+variable	pro_step	equal	1e5
+variable	dt		equal	0.001
+variable	thermo_step	equal	1000
+variable	epsilon		equal	1
+variable	sigma		equal	1.0
+variable	part_num	equal	1000
+variable	lj_cut		equal	3.5*${sigma}
+variable 	S 		equal 	step
+variable 	T 		equal 	temp
+variable 	V 		equal 	vol
+variable	rho		equal	0.1
+variable 	Ke 		equal 	ke
+variable 	Pe 		equal 	pe
+variable	P 		equal 	press
+variable 	E 		equal 	etotal
+variable 	EP 		equal 	epair
+variable	eq_dump		equal	1e3
+variable	pro_dump	equal	1e3
+variable	box_length	equal   ceil((${part_num}/${rho})^(1/3))
+
+################### Initialization ######################
+units			lj
+dimension		3
+boundary		p p p
+atom_style		atomic
+lattice			sc ${rho}
+region 			box block 0.0 ${box_length} 0.0 ${box_length} 0.0 ${box_length}
+create_box		1 box
+create_atoms		1 box
+mass			1 1.0
+
+################## Force Parameters ####################
+pair_style		lj/cut ${lj_cut}
+pair_modify		shift yes
+pair_coeff              1 1 ${epsilon} ${sigma} ${lj_cut}
+######################### RUN ###########################
+min_style		sd
+minimize		1.0e-6 1.0e-8 1000 10000
+velocity		all create 1.0 89562387 dist gaussian
+			
+fix			1 all nvt temp 1.0 1.0 10 #NoseHoover
+thermo_style            custom step temp press pe ke etotal density 
+thermo                  ${thermo_step}
+
+timestep		${dt}
+#fix			3 all print ${thermo_step} "$S $T $P ${Pe} ${Ke} $E ${EP}" file equilibration.dat
+
+#dump			 1 all custom ${eq_dump} dump.equilibration id x y z
+
+run                     ${eq_step}
+#undump                  1
+#unfix			3
+
+write_restart           equilibrium.restart
+
+
+print                   "**************************************************************************"
+print                   "#################### Equilibration Over ##################################"
+print                   "**************************************************************************"
+
+#dump                    11 all custom ${pro_dump} dump.production id x y z
+
+#fix                     4 all print ${thermo_step} "$S $T $P ${Pe} ${Ke} $E ${EP}" file production.dat
+
+#########RDF calculation###############
+compute			    AA all rdf 500 1 1 cutoff 3.5
+fix			    5 all ave/time 10 100 ${pro_step} c_AA[*] file rdf_${rho}.dat mode vector
+
+run                     ${pro_step}
+write_restart           production.restart
+#unfix			4
+
+print			"***********************Succesfully Ran the Simulation************************"
+
+################### End Of File	##########################
