@@ -1,0 +1,35 @@
+read_restart	system_after_npt.rst
+
+variable 	S 		equal 	step
+variable 	T 		equal 	temp
+variable 	P 		equal 	press
+variable 	V 		equal 	vol
+variable 	rho 		equal 	density
+variable 	Ke 		equal 	ke
+variable 	Pe 		equal 	pe
+variable 	E 		equal 	etotal
+variable	xrate		equal	1e-4
+group spce type  1  2
+change_box 	all triclinic
+kspace_style pppm 0.0001
+timestep        2.0
+dump            1 all custom 100 traj_npt_shear.dump id x y z
+fix		1 all deform 1 xy erate ${xrate} remap v
+compute		def all temp/deform
+fix             fxnvt all nvt temp 290.0 290.0 100.0
+fix_modify	fxnvt temp def
+
+compute		layers all chunk/atom bin/1d y center 0.05 units reduced
+fix		4 all ave/chunk 100 1 200000 layers vx file velprof.dat
+compute		press all pressure def
+variable	visc equal -c_press[4]/${xrate}
+fix		vave all ave/time 100 1 1000 v_visc file viscosity.dat
+
+thermo_style custom step temp press pe f_vave
+thermo_modify	temp def 
+thermo          1000
+fix		2 all print 100 "$S $T $P ${Pe} ${Ke} $E ${rho}" file shear_thermo.dat
+
+run             2000000  #4ns
+
+write_restart   system_after_shear.rst

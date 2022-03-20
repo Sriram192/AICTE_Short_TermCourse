@@ -1,0 +1,26 @@
+read_restart	system_after_npt.rst
+
+variable 	S 		equal 	step
+variable 	T 		equal 	temp
+variable 	P 		equal 	press
+variable 	V 		equal 	vol
+variable 	rho 		equal 	density
+variable 	Ke 		equal 	ke
+variable 	Pe 		equal 	pe
+variable 	E 		equal 	etotal
+kspace_style pppm 0.0001
+group spce type  1  2
+
+timestep        2.0
+dump            1 all custom 100 traj_npt_pro.lammpstrj id mol type x y z ix iy iz
+fix             fxnpt all npt temp 290.0 290.0 100.0 iso 1.0 1.0 1000.0 drag 1.0
+
+thermo          100
+fix		2 all print 100 "$S $T $P ${Pe} ${Ke} $E ${rho}" file pro_thermo.dat
+
+compute		1 spce msd com yes
+fix		3 all ave/time 10 30 500 c_1[*] file msd.dat mode vector
+
+run             100000
+
+write_restart   system_after_pro.rst
