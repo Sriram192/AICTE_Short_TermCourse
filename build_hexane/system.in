@@ -11,7 +11,7 @@ variable 	rho 		equal 	density
 variable 	Ke 		equal 	ke
 variable 	Pe 		equal 	pe
 variable 	E 		equal 	etotal
-variable	run_step	equal	5e6
+variable	run_step	equal	4e6
 
 # ----------------- Atom Definition Section -----------------
 
@@ -38,14 +38,18 @@ group 		spce type  1  2
 group		methane	type 3:908
 
 timestep        1.0
-dump            1 all custom 1000 traj_npt.lammpstrj id mol type x y z ix iy iz
-fix             fxnpt all npt temp 293.0 293.0 100.0 iso 1.0 1.0 1000.0 drag 1.0
+dump            1 all custom 1000 traj_npt.dump id type x y z
+fix             fxnpt all npt temp 293.0 293.0 100.0 iso 1.0 1.0 1000.0
 
 thermo          100
 fix		2 all print 100 "$S $T $P ${Pe} ${Ke} $E ${rho}" file eq_thermo.dat
 
-compute		layer all chunk/atom bin/1d y center 0.02 units reduced
-fix		3 all ave/chunk 1000 1 ${run_step} layer density/mass density/number file den_profile.dat
+compute		layer1 all chunk/atom bin/1d x center 0.02 units reduced
+compute		layer2 all chunk/atom bin/1d y center 0.02 units reduced
+compute		layer3 all chunk/atom bin/1d z center 0.02 units reduced
+fix		3 all ave/chunk 1000 1 ${run_step} layer1 density/mass density/number file den_profile1.dat
+fix		3 all ave/chunk 1000 1 ${run_step} layer2 density/mass density/number file den_profile2.dat
+fix		3 all ave/chunk 1000 1 ${run_step} layer3 density/mass density/number file den_profile3.dat
 
 fix 		fRattleSPCE spce rattle 0.0001 10 100 b 1 a 1
 run             ${run_step}
