@@ -1,0 +1,37 @@
+set term jpeg
+set output '1NBr.jpeg'
+#set output '1SC20_RDF_DSizes.jpeg'
+#set output '1SC20_RDF_S6G1CTAB.jpeg'
+#set output '2SBr_RDF_DSizes.jpeg'
+#set output '3SC15_RDF_S7G2CTAB.jpeg'
+#set output '1SBr_RDF_S6G1CTAB.jpeg'
+#set output '1BrN_RDF_S6G1CTAB.jpeg'
+#set output '5SBr_RDF_S7G2CTAB.jpeg'
+#set title 'Radial Distribution Function C20  w.r.t AuNP Surface '
+#set title 'Radial Distribution Function N w.r.t AuNP Surface '
+set title 'Radial Distribution Function NBr w.r.t AuNP Surface '
+#set xrange [0:20000]
+#set yrange [0:7]
+#set yrange [-250000:100000]
+set xlabel ' r (nm)'
+set ylabel 'g(r)'
+
+set style line 1 lt 2 lc rgb "blue" lw 2.7
+set style line 2 lt 2 lc rgb "green" lw 2.7
+set style line 3 lt 2 lc rgb "red" lw 2.7 
+
+#plot '../S6G1CTAB/rdfmd_1sC20.xvg' using 1:2  with lines ls  1  title'1 nm AunP',\
+#     'rdfmd_1sC20.xvg' using 1:2  with lines ls 2  title '2 nm AuNP',\
+#     '../S8G3CTAb/rdfmd_1sC20.xvg' using 1:2  with lines ls 3  title '3 nm AuNP'
+#plot '../HDS6G1CTAB/rdfmd_1sBr.xvg' using 1:2  with lines ls  1  title '1 nm AunP',\
+#     'rdfmd_1sBr.xvg' using 1:2  with lines ls 2  title '2 nm AuNP',\
+#     '../S8G3CTAb/rdfmd_1sBr.xvg' using 1:2  with lines ls 3  title '3 nm AuNP'
+
+#plot '../S6G1CTAB/rdfmd_1sN.xvg' using 1:2  with lines ls  1  title '1 nm AunP',\
+#     'rdfmd_1sN.xvg' using 1:2  with lines ls 2  title '2 nm AuNP',\
+#     '../S8G3CTAb/rdfmd_1sN.xvg' using 1:2  with lines ls 3  title '3 nm AuNP'
+
+plot 'rdfmd_1NBr.xvg' using 1:2  with lines ls  1  title '1 nm AunP',\
+     '../S7G2CTAB/rdfmd_1NBr.xvg' using 1:2  with lines ls 2  title '2 nm AuNP',\
+     '../S8G3CTAb/rdfmd_1NBr.xvg' using 1:2  with lines ls 3  title '3 nm AuNP'
+

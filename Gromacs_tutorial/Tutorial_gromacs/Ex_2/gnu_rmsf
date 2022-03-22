@@ -1,0 +1,31 @@
+#set output '../../Results/C7_C7_666_Rg_8.jpeg'
+set term postscript eps color enhanced 'Arial, 30' solid linewidth 3
+set output 'Fig_RMSF2.eps'
+set title 'RMSF of A{/Symbol b}40  '
+#set title ' Energy Analysis of A{/Symbol b}40 CP '
+set xrange [1:40]
+set yrange [0.1:.60]
+set xlabel 'Residue index (#)'
+set ylabel "RMSF (nm)"
+#set ylabel '{{/Symbol r } (kg/m3)}'
+set key spacing 0.65
+set key top right
+#set xlabel "x-units" font "Times-Roman,12"
+#set ylabel "y-units" font "Times-Roman,12"
+
+set style line 1 lt 1 lc rgb "black"   ps 1.5
+set style line 2 lt 2 lc rgb "magenta" ps 1.05
+set style line 3 lt 3 lc rgb "blue"    ps 1.05 
+set style line 4 lt 4 lc rgb "red"     ps 1.05 
+set style line 5 lt 5 lc rgb "green"   ps 1.05
+set style line 6 lt 6 lc rgb "orange"  ps 1.05 
+set style line 7 lt 7 lc rgb "yellow"  ps 1.5 
+
+plot     'rmsf.xvg'       using 1:2   with points ls 2  title '{/*0.85 rmsf }',\
+
+#set yrange [0:.750]
+#set xrange [0:1.0]
+#set output 'Fig_rmsd_comp.eps'
+#plot     'rmsd.xvg'       using 1:2   with lines ls 4  title '{/*0.65 rmsd }',\
+#         'rmsd_xtal.xvg'       using 1:2   with lines ls 5  title '{/*0.65 rmsd_{crystal} }'
+

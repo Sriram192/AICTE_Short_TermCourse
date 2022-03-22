@@ -1,0 +1,40 @@
+cpp			 = /lib/cpp
+dt                       = 0.002	        ; 2 fs
+nsteps                   = 25000  	        ; total 0.05 ns or 50 ps
+nstlist                  = 1         ; (100)
+nstxout                  = 0
+nstvout                  = 0
+nstxtcout		 = 10000
+continuation             = yes           ; Restarting after NPT
+;unconstrained-start     = yes
+nstlog                   = 5000
+constraints              = none ; (all-bonds)
+nstenergy                = 10000
+ns_type                  = grid
+coulombtype              = pme
+rlist                    = 1.0
+rvdw                     = 1.0
+rcoulomb                 = 1.0 
+tcoupl                   = Nose-hoover ; berendsen
+tc_grps                  = system
+tau_t                    = 0.1    
+ref_t                    = 300    
+;Pcoupl                   = Parrinello-Rahman ;berendsen;no
+;Pcoupltype               = isotropic
+;tau_p                    = 1 
+;compressibility          = 4.5e-5 
+;ref_p                    = 1.0 
+;fourier_nx               = 64 ; for dd
+;fourier_ny               = 64 ; 
+;fourier_nz               = 64 ;
+;optimize_fft             = yes
+; Periodic boundary conditions
+pbc             = xyz               ; 3-D PBC
+; Dispersion correction
+DispCorr        = EnerPres      ; account for cut-off vdW scheme
+; Velocity generation
+;gen_vel         = yes           ; assign velocities from Maxwell distribution
+;gen_temp        = 300           ; temperature for Maxwell distribution
+;gen_seed        = 108            ; generate a random seed
+
+

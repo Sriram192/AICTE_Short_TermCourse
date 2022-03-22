@@ -1,0 +1,28 @@
+set term jpeg
+#set output 'MD_1.jpeg'
+set output 'E_NVMD_G2CTAB.jpeg'
+set title 'PE_KE_TE Energy G2CTAB_VMD20ns '
+#set xrange [0:20000]
+#set xrange [0:10000]
+#set yrange [-250000:100000]
+set xlabel 'Time (ps)'
+set ylabel 'Energy (KJ/mol)'
+
+set style line 1 lt 2 lc rgb "red" lw 2 
+set style line 2 lt 2 lc rgb "blue" lw 2
+set style line 3 lt 2 lc rgb "green" lw 2
+
+plot 'PE.xvg' using 1:2  with lines ls 1  title 'PE',\
+     'KE.xvg' using 1:2   with lines ls 2 title 'KE',\
+     'TE.xvg' using 1:2   with lines ls 3 title 'TE'
+
+#plot 'PE.xvg' using 1:2  with linespoints ls 1  title 'PE',\
+#     'KE.xvg' using 1:2   with linespoints ls 2 title 'KE',\
+#     'TE.xvg' using 1:2   with linespoints ls 3 title 'TE'
+#plot 'PE1.xvg' using 1:2  with linespoints ls 1  title 'PE',\
+#     'KE1.xvg' using 1:2   with linespoints ls 2 title 'KE',\
+#     'TE1.xvg' using 1:2   with linespoints ls 3 title 'TE'
+#set label 1 'set style line 1 lt 2 lc rgb "yellow" with lines lw 2' at -0.4, -0.45 tc rgb "yellow"
+#set style line 1 lt 2 lc rgb "yellow" lw 1 
+#set label 1 'set style line 1 lt 2 lc rgb "red" with lines lw 2' at -0.4, -0.45 tc rgb "red"
+#set label 2 'set style line 2 lt 2 lc rgb "blue" lw 2'  at -0.4, -0.55 tc rgb "blue"

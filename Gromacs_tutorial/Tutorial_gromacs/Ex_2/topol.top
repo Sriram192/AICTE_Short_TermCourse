@@ -1,0 +1,13 @@
+#include "ffgmx.itp"
+#include "ctab_SMeenaLang13.itp"
+#include "spc.itp"
+#include "ions.itp"
+
+[ system ]
+; name
+AU144SRCOO60 in Solution in water
+
+[ molecules ]
+; name	number
+;NP2         1
+CTAB        25 

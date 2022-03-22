@@ -1,0 +1,30 @@
+# This file was created Tue Mar 22 01:14:51 2022
+# Created by:
+#              :-) GROMACS - gmx energy, 2020.1-Ubuntu-2020.1-1 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/hp/Downloads/Tutorial_ctab2
+# Command line:
+#   gmx energy -f nvt_1.edr -o T.xvg
+# gmx energy is part of G R O M A C S:
+#
+# Gnomes, ROck Monsters And Chili Sauce
+#
+@    title "GROMACS Energies"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "(K)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Temperature"
+    0.000000    1.340335
+   20.000000  304.531281
+   40.000000  300.499115
+   60.000000  299.963440
+   80.000000  297.443298
+  100.000000  297.155914

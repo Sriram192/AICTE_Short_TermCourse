@@ -1,0 +1,24 @@
+set term jpeg
+#set output 'MD_1.jpeg'
+set output '1MinD_G2CTAB.jpeg'
+set title "Minimum Distance"
+set xlabel "Time (ns)"
+set ylabel "Distance (nm)"
+#set xrange [0:20000]
+#set xrange [0:10000]
+#set yrange [-250000:100000]
+set style line 1 lt 2 lc rgb "red" lw 2.5 
+set style line 2 lt 2 lc rgb "blue" lw 2.5
+set style line 3 lt 2 lc rgb "green" lw 2.5
+
+plot 'minimdist2.xvg' using 1:2  with lines ls 2  title 'Distance of N w.r.t AuNPSurface '
+#plot 'rdfmd_2s.xvg' using 1:2  with lines ls 2  title 'g(r) of CTAB w.r.t AuNP Surface '
+#plot 'rdf.xvg' using 1:2  with lines ls 1  title 'g(r) of CTAB w.r.t AuNP Surface '
+
+
+#plot 'rdf.xvg' using 1:2  with lines ls 1  title 'PE',\
+#     'KE.xvg' using 1:2   with lines ls 2 title 'KE',\
+#set label 1 'set style line 1 lt 2 lc rgb "yellow" with lines lw 2' at -0.4, -0.45 tc rgb "yellow"
+#set style line 1 lt 2 lc rgb "yellow" lw 1 
+#set label 1 'set style line 1 lt 2 lc rgb "red" with lines lw 2' at -0.4, -0.45 tc rgb "red"
+#set label 2 'set style line 2 lt 2 lc rgb "blue" lw 2'  at -0.4, -0.55 tc rgb "blue"

@@ -1,0 +1,31 @@
+set term jpeg
+#set output 'MD_1.jpeg'
+set output '1aRDF_S6G1CTAB.jpeg'
+set title 'Radial Distribution Function: AuNP 1nm'
+#set xrange [0:20000]
+set yrange [0:7]
+#set yrange [-250000:100000]
+set xlabel ' r (nm)'
+set ylabel 'g(r)'
+
+set style line 1 lt 2 lc rgb "blue" lw 2.7 
+set style line 2 lt 2 lc rgb "green" lw 2.7
+set style line 3 lt 2 lc rgb "red" lw 2.7
+
+plot 'rdfmd_1sN.xvg' using 1:2  with lines ls  1  title 'N-AuNP Surface ',\
+     '../HDS6G1CTAB/rdfmd_1sBr.xvg' using 1:2  with lines ls 2  title 'Br-AuNP Surface',\
+     'rdfmd_1NBr.xvg' using 1:2  with lines ls 3  title 'N-Br'
+
+
+
+
+
+
+#    'rdfmd_1sC20.xvg' using 1:2  with lines ls  3  title ' C20 w.r.t AuNPS ',\
+#plot 'rdfmd_1sC20.xvg' using 1:2  with lines ls 2  title 'g(r) of N  w.r.t AuNPS RGLP',\
+#    '../S6G1CTAB/rdfmd_1sC20.xvg' using 1:2  with lines ls  3  title 'g(r) of CTAB w.r.t AuNPS RANP '
+#plot 'rdfmd_1sC15.xvg' using 1:2  with lines ls 2  title 'g(r) of N  w.r.t AuNPS RGLP',\
+#    '../S6G1CTAB/rdfmd_1sC15.xvg' using 1:2  with lines ls  3  title 'g(r) of CTAB w.r.t AuNPS RANP '
+
+
+

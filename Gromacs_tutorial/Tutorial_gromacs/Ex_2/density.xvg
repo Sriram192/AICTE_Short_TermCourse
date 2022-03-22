@@ -1,0 +1,28 @@
+# This file was created Tue Mar 22 02:06:51 2022
+# Created by:
+#              :-) GROMACS - gmx energy, 2020.1-Ubuntu-2020.1-1 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/hp/Downloads/Tutorial_ctab2/Ex_2
+# Command line:
+#   gmx energy -f npt_1.edr -o density.xvg
+# gmx energy is part of G R O M A C S:
+#
+# Green Red Orange Magenta Azure Cyan Skyblue
+#
+@    title "GROMACS Energies"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "(kg/m^3)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Density"
+    0.000000  1022.209778
+   20.000000  998.971252
+   40.000000  995.920959
+   50.000000  1002.721741

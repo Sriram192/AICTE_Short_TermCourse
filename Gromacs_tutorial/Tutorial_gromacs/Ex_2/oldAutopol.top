@@ -1,0 +1,17 @@
+#include "ffgmx.itp"
+#include "ctab.itp"
+#include "spc.itp"
+#include "ions.itp"
+
+[ system ]
+; name
+AU144SRCOO60 in Solution in water
+
+[ molecules ]
+; name	number
+AU         1
+CTAB        2   
+
+;#include "ffnonbonded.itp"
+;#include "ffgmxnb_v2.itp"
+;#include "Au.itp"

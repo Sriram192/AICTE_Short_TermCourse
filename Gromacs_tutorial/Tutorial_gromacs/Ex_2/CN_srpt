@@ -1,0 +1,20 @@
+set term jpeg
+#set output 'MD_1.jpeg'
+set output '1CN_N_G2CTAB.jpeg'
+set title 'Cumulative Number of Nitrogen w.r.t Distance from AuNP Surface :G2CTAB '
+#set xrange [0:20000]
+#set xrange [0:10000]
+#set yrange [-250000:100000]
+set xlabel ' r (nm)'
+set ylabel 'Cum Number of N '
+
+set style line 1 lt 1 lc rgb "green" lw 2.5
+set style line 2 lt 2 lc rgb "blue" lw 2.5
+set style line 3 lt 3 lc rgb "red" lw 2.5 
+
+plot 'CN2.xvg' using 1:2  with lines ls 2  title ' Cum Number of N  w.r.t AuNP Surface '
+
+#plot 'rdfmd_1comN.xvg' using 1:2  with lines ls 2  title 'g(r) of N  w.r.t AuNP com ',\
+#plot 'rdfmd_1sCTAB.xvg' using 1:2  with lines ls 3  title 'g(r) of CTAB  w.r.t AuNP Surface '
+
+
