@@ -1,0 +1,57 @@
+# This file was created Mon Mar 21 17:46:14 2022
+# Created by:
+#               :-) GROMACS - gmx rmsf, 2020.1-Ubuntu-2020.1-1 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/hp/Downloads/Tutorial_prot1/Ex_1
+# Command line:
+#   gmx rmsf -s md_1.tpr -f md_1_noPBC.xtc -o rmsf.xvg -oq rmsf.pdb -res
+# gmx rmsf is part of G R O M A C S:
+#
+# GROningen Mixture of Alchemy and Childrens' Stories
+#
+@    title "RMS fluctuation"
+@    xaxis  label "Residue"
+@    yaxis  label "(nm)"
+@TYPE xy
+    1   0.3086
+    2   0.1977
+    3   0.2776
+    4   0.2955
+    5   0.3812
+    6   0.3771
+    7   0.2423
+    8   0.3468
+    9   0.2722
+   10   0.2530
+   11   0.2600
+   12   0.2140
+   13   0.2874
+   14   0.3245
+   15   0.2065
+   16   0.1920
+   17   0.2194
+   18   0.2518
+   19   0.2595
+   20   0.2276
+   21   0.2266
+   22   0.2783
+   23   0.2070
+   24   0.2121
+   25   0.2739
+   26   0.3124
+   27   0.2492
+   28   0.2162
+   29   0.1320
+   30   0.1772
+   31   0.1820
+   32   0.1782
+   33   0.1728
+   34   0.2570
+   35   0.2456
+   36   0.2293
+   37   0.2641
+   38   0.2867
+   39   0.4255
+   40   0.4951
